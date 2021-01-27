@@ -16,6 +16,7 @@ app.use(express.json());
 // API routes
 app.use(require('./routs/index'));
 app.use('/api/movies',require('./routs/movies'));
+app.use('/api/users',require('./routs/users'));
 //starting the server
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
