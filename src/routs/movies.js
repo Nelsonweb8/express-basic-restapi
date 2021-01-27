@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const _= require('underscore');
 //datos de "db"
 const movies = require('../sample.json');
 console.log(movies);//consola
@@ -24,6 +25,19 @@ router.post('/', (req, res) => {
     }
 });
 
+//ELIMINAR POR PARAMETRO ID
+router.delete('/:id', (req, res) => {
+    //console.log(req.params);
+    const {id} = req.params;
+    //recorro movies, splice=remover
+    _.each(movies, (movie, i) => {
+        if (movie.id == id) {
+            movies.splice(i, 1);
+        }
+    });
+    //res.send('delete');
+    res.send(movies);
+});
 
 
 module.exports = router;
